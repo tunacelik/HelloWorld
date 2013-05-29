@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Hello World</title>
-<head>
-<body>
-<button id="helloButton">Say Hello</button>
-<button id="clearButton">Clear</button>
+  <head>
+    <title>Device Properties Example</title>
 
-<div id="mainDiv"></div>
-<script src="js/jquery.js"></script>
-<script src="js/helloworld.js"></script>
-<script>
-$('#helloButton').click(function() {
-  HELLOWORLD.sayHello($('#mainDiv'));
-});
+    <script type="text/javascript" charset="utf-8" src="cordova-2.3.0.js"></script>
+    <script type="text/javascript" charset="utf-8">
 
-$('#clearButton').click(function() {
-  $('#mainDiv').html('');
-});
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
 
-</script>
-</body>
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        var element = document.getElementById('deviceProperties');
+
+        element.innerHTML = 'Device Name: '     + device.name     + '<br />' + 
+                            'Device Cordova: '  + device.cordova + '<br />' + 
+                            'Device Platform: ' + device.platform + '<br />' + 
+                            'Device UUID: '     + device.uuid     + '<br />' + 
+                            'Device Model: '    + device.model     + '<br />' + 
+                            'Device Version: '  + device.version  + '<br />';
+    }
+
+    </script>
+  </head>
+  <body>
+    <p id="deviceProperties">Loading device properties...</p>
+  </body>
 </html>
